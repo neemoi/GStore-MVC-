@@ -1,0 +1,116 @@
+﻿@model IEnumerable<GStore.Models.User>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/ScriptGetUserInfo.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap.sass/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/StylesBoardtableInfo.css" />
+</head>
+<body>
+    <center>
+        <h1>Информация о пользователе</h1>
+    </center>
+    @if (Model.Count() == 0)
+    {
+        <h1>Пользователь не найден</h1>
+    }
+    else if (Model.Count() == 1)
+    {
+
+        <table class="table" style="margin-top: 50px">
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Информация</th>
+                <th>Корзина</th>
+                <th>Заказы</th>
+                <th>Редактировать</th>
+                <th>Права доступа</th>
+                <th>Удалить</th>
+            </tr>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-bs-id="@user.Id" data-bs-email="@user.Email" data-bs-password="@user.Password"
+                        data-bs-name="@user.Name" data-bs-country="@user.Country" data-bs-city="@user.City"
+                        data-bs-address="@user.Address" data-bs-phone="@user.Phone">
+                            Информация
+                        </button>
+                    </td>
+                    <td>
+                        <button style="color: red" class="btn btn-sm btn-primary">Корзина</button>
+                    </td>
+                    <td>
+                        <button style="color: red" class="btn btn-sm btn-primary">Заказы</button>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-sm btn-primary" asp-action="EditUser" asp-controller="AdminPanelUsers" asp-route-id="@user.Id">Редактировать</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" asp-controller="Roles" asp-action="Edit" asp-route-userid="@user.Id">Права доступа</a>
+                    </td>
+                    <td>
+                        <form asp-action="Delete" asp-controller="AdminPanelUsers" asp-route-id="@user.Id" method="post">
+                            <button type="submit" class="btn btn-sm btn-danger"> Удалить </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="modal-footer">
+            <div>
+                <a asp-action="UserList" asp-controller="AdminPanelUsers" class="d-inline-block align-middle">Список пользователей</a>
+            </div>
+        </div>
+    }
+
+    <!-- Modal Info -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="infoModalLabel">Информация о пользователе</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="tableInfo" style="margin-top: 15px;">
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Пароль</th>
+                            <th>Имя</th>
+                            <th>Страна</th>
+                            <th>Город</th>
+                            <th>Адресс</th>
+                            <th>Телефон</th>
+                        </tr>
+                        <tr>
+                            <td id="infoId"></td>
+                            <td id="infoEmail"></td>
+                            <td id="infoPassword"></td>
+                            <td id="infoName"></td>
+                            <td id="infoCountry"></td>
+                            <td id="infoCity"></td>
+                            <td id="infoAddress"></td>
+                            <td id="infoPhone"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap.sass/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

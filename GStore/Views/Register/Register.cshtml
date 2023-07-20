@@ -1,0 +1,37 @@
+﻿@model GStore.Models.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center">Регистрация</h2>
+
+<form method="post" asp-controller="Register" asp-action="Register" style="text-align: center">
+    @*проверить*@
+    <div class="validation" asp-validation-summary="ModelOnly"></div> 
+        <div>
+            <label asp-for="Email">Email</label><br />
+            <input type="text" asp-for="Email" />
+            <span asp-validation-for="Email" />
+        </div>
+
+        <div>
+            <label asp-for="Password">Пароль</label><br />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password" />
+        </div>
+
+        <div>
+            <label asp-for="ConfirmPassword">Повторите пароль</label><br />
+            <input asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword" />
+        </div>
+
+        <div>
+            <input type="submit" value="Регистрация" />
+        </div>
+
+        <div>
+            <a asp-action="Login" asp-controller="Login">Войти</a>
+        </div>
+</form>

@@ -1,0 +1,54 @@
+﻿@model User
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div style="border-radius: 20px; border: 1px solid black; padding: 50px; margin-top: 50px">
+        <h2 style="color: black">
+            @User?.Identity?.Name
+            <a class="btn-group ms-auto" role="group" aria-label="Basic example">
+                <a asp-action="" asp-controller="" class="btn btn-primary mx-4">Редактировать</a>
+            </a>
+        </h2>
+		<hr />
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltip01" class="form-label">Email</label>
+                <input type="text" class="form-control" id="validationTooltip01" asp-for="@Model.Email" required readonly>
+            </div>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltip02" class="form-label">Ф.И.О</label>
+                <input type="text" class="form-control" id="validationTooltip02" asp-for="@Model.Name" required readonly>
+            </div>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltip02" class="form-label">Имя</label>
+                <input type="text" class="form-control" id="validationTooltip03" asp-for="@Model.UserName" required readonly>
+            </div>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltip02" class="form-label">Страна</label>
+                <input type="text" class="form-control" id="validationTooltip04" asp-for="@Model.Country" required readonly>
+            </div>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltip02" class="form-label">Город</label>
+                <input type="text" class="form-control" id="validationTooltip05" asp-for="@Model.City" required readonly>
+            </div>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltip02" class="form-label">Телефон</label>
+                <input type="text" class="form-control" id="validationTooltip06" asp-for="@Model.Phone" required readonly>
+            </div>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltip02" class="form-label">Адресс</label>
+                <input type="text" class="form-control" id="validationTooltip07" asp-for="@Model.Address" required readonly>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+<h2 style="text-align: center">Список ролей</h2>
+<table class="table">
+    @foreach (var role in Model)
+    {
+            <tr>
+                <td>@role.Name</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@role.Id" method="post">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Удалить
+                        </button>
+                    </form>
+                </td>
+            </tr>
+    }
+</table>
+
+<div class="d-flex justify-content-between mt-3">
+    <div>
+        <a asp-action="UserList" asp-controller="AdminPanelUsers" class="d-inline-block align-middle">Список пользователей</a>
+    </div>
+    <div>
+        <button asp-action="Create" asp-controller="Roles" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRoleModal">
+            Добавить роль
+        </button>
+    </div>
+</div>
+
+<!-- Modal AddRole -->
+<form asp-action="Create" method="post">
+<div class="modal fade" id="addRoleModal" tabindex="-1" aria-labelledby="addRoleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Добавить роль</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="name">Новая роль</label>
+                    <input name="name" class="form-control" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

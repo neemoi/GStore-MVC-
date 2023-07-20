@@ -1,0 +1,34 @@
+﻿.tableInfo {
+    border-collapse: collapse;
+    margin-top: 50px;
+    width: 100%;
+}
+
+    .tableInfo th,
+    .tableInfo td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+        vertical-align: middle;
+        background-color: white;
+    }
+
+    .tableInfo th:first-child,
+    .tableInfo td:first-child {
+    }
+
+    .tableInfo th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        text-align: left;
+        background-color:ghostwhite;
+    }
+
+.tableInfo tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tableInfo tr:hover {
+    background-color: #ddd;
+}
+

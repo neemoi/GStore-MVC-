@@ -1,0 +1,57 @@
+﻿@model GStore.Models.ViewModels.AddUserViewModel
+
+
+<center>
+    <h1 class="modal-title fs-7" id="AddUser">Добавить пользователя</h1>
+</center>
+<form method="post" asp-controller="AdminPanelUsers" asp-action="AddUser">
+    @Html.AntiForgeryToken()
+    <div class="modal-body">
+        <div class="mb-3">
+            <label for="editEmailInput" class="form-label">Email</label>
+            <input type="email" class="form-control" id="editEmailInput" asp-for="Email">
+            <span asp-validation-for="Email" class="text-danger" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label for="editNameInput" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="editNameInput" asp-for="Name">
+            <span asp-validation-for="Name" />
+        </div>
+        <div class="mb-3">
+            <label for="editPasswordInput" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="editPassword" asp-for="Password">
+            <span asp-validation-for="ConfirmPassword" class="text-danger" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label for="editConfirmPasswordInput" class="form-label">Подтвердить пароль</label>
+            <input type="password" class="form-control" id="editConfirmPassword" asp-for="ConfirmPassword">
+            <span asp-validation-for="ConfirmPassword" class="text-danger" style="color:red"></span>
+        </div>
+        <div class="mb-3">
+            <label for="editCountryInput" class="form-label">Страна</label>
+            <input type="text" class="form-control" id="editCountry" asp-for="Country">
+            <span asp-validation-for="Country" />
+        </div>
+        <div class="mb-3">
+            <label for="editCityInput" class="form-label">Город</label>
+            <input type="text" class="form-control" id="editCity" asp-for="City">
+            <span asp-validation-for="City" />
+        </div>
+        <div class="mb-3">
+            <label for="editAddressInput" class="form-label">Адрес</label>
+            <input type="text" class="form-control" id="editAddress" asp-for="Address">
+            <span asp-validation-for="Address" />
+        </div>
+        <div class="mb-3">
+            <label for="editPhoneInput" class="form-label">Телефон</label>
+            <input type="number" class="form-control" id="editPhonet" asp-for="Phone">
+            <span asp-validation-for="Phone" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div>
+            <a asp-action="UserList" asp-controller="AdminPanelUsers" class="d-inline-block align-middle">Список пользователей</a>
+        </div>
+        <button type="submit" class="btn btn-primary float-end">Сохранить</button>
+    </div>
+</form>
